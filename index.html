@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Find My Stuff - DTU</title>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> 
+    <style>
+            /* Set the size of the div element that contains the map */
+           #map {
+             height: 535px;  /* The height is 400 pixels */
+             width: 100%;  /* The width is the width of the web page */
+             padding:0;
+             margin:0;
+            }
+            html,body{
+                height:100%;
+                margin:0;
+                padding:0;
+     
+            }
+            .navbar-inverse{
+                padding:0;
+                margin:0;
+            }
+            body{
+                font-family: 'Roboto', sans-serif;
+            }
+            .buttons{
+                text-align: center;
+                background:rgba(255,255,255,0.2);
+                position:500px 0 0 0;
+                padding:0;
+                margin:0;
+                
+            }
+            .container .container-buttons{
+                width:100%;
+            }
+            div .container-buttons{
+                opacity:1;
+                filter:alpha(opacity=100);
+            }
+     
+         </style>
+
+  </head>
+  <body>
+        <nav class="navbar navbar-inverse" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"> <i class="fab fa-searchengin"></i> Find My Stuff</a>
+                    </div>
+                
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="itemsList.html"> <i class="fas fa-list-ul"></i> Items List</a></li>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook Page</a></li>
+                        </ul>
+                        
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#"> <i class="fab fa-teamspeak"></i> Team</a></li>
+                            <li><a href="#"> <i class="fas fa-question"></i> About</a></li>
+                            <li><a href="#"> <i class="fas fa-chart-area"></i> Stats</a></li>
+
+
+                            
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div>
+            </nav>
+
+
+
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+    <div class="buttons">
+        <div class="container container-buttons">
+            <button class="btn btn-default">I have lost something!</button>
+            <button class="btn btn-default">I have found something!</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+        // The location of DTU
+        var dtu = {lat: 28.7500749, lng: 77.1176652};
+        // The map, centered at DTU
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 17, center: dtu});
+        // The marker, positioned at DTU
+        var marker = new google.maps.Marker({position: dtu, map: map});
+        }
+    </script>
+  
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzUMwQ4xjTxand599i83W5nmm1LnOs4bE&callback=initMap">
+    </script>
+    <!-- JQuery CN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+  </body>
+</html>
