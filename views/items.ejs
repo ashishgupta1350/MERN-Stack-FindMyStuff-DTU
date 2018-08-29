@@ -1,0 +1,88 @@
+<% include partials/header %>
+    <div class="row">
+        <div class="container">
+            <div class="topPart">
+                <ul class="buttonList">
+                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Lost Items</li>
+                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Found Items</li>
+                </ul>
+                <div class="searchbar">
+                    <!-- <div id="icon"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
+                    <input type="text"> -->
+                    <form class="form-inline">
+                        <div class="form-group">
+                          <input type="text" class="form-control" id="" placeholder="Search">
+                          <button type="submit" class="btn btn-default">Search</button>
+                        </div>                        
+                      </form>
+                </div>
+            </div>
+
+        <div class="table-item-lost">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Details</th>
+                        <th>Specifications</th>
+                        <th>Action</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                            <% lostItems.forEach(function(item){ %>
+                            
+                                <tr>
+                                        <td><%=item.item%></td>
+                                        <td><%=item.details%></td>
+                                        <td><%=item.specifications%></td>
+                                        <td><button>I've found it</button></td>
+                                        <td><a target="_blank" href="someimage.jpg"><i class="fas fa-camera"></i></a></td>
+                                      </tr>
+                            <% }); %>
+                            
+                      </tbody>
+            </table>
+        </div>
+        <div class="table-item-found">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Details</th>
+                        <th>Specifications</th>
+                        <th>Action</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                            <% foundItems.forEach(function(item){ %>
+                            
+                                <tr>
+                                        <td><%=item.item%></td>
+                                        <td><%=item.details%></td>
+                                        <td><%=item.specifications%></td>
+                                        <td><button>I've found it</button></td>
+                                        <td><a target="_blank" href="someimage.jpg"><i class="fas fa-camera"></i></a></td>
+                                        </tr>
+                            <% }); %>
+                            
+                        </tbody>
+            </table>
+        </div>
+                
+            
+        </div>
+        </div>
+     <!-- Copyright -->
+        
+    <footer class="page-footer font-small dark footer">
+      <div class="footer-copyright text-center py-3">© Created By:
+        <a href="https://github.com/ashishgupta1350"> Ashish Gupta</a>
+      </div>
+    </footer>
+      <!-- Copyright -->
+
+    <% include partials/footer %>
+
+

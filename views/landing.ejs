@@ -1,0 +1,28 @@
+<% include partials/header %>
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+    <div class="index-buttons">
+        <div class="container container-buttons">
+            <button class="btn btn-danger">I have lost something!</button>
+            <button class="btn btn-success">I have found something!</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+        // The location of DTU
+        var dtu = {lat: 28.7500749, lng: 77.1176652};
+        // The map, centered at DTU
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 17, center: dtu});
+        // The marker, positioned at DTU
+        var marker = new google.maps.Marker({position: dtu, map: map});
+        }
+    </script>
+  
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzUMwQ4xjTxand599i83W5nmm1LnOs4bE&callback=initMap">
+    </script>
+ <% include partials/footer %>

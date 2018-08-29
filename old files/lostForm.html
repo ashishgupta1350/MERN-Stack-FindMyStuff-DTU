@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Find My Stuff - DTU</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> 
+    <style>
+            /* Set the size of the div element that contains the map */
+           
+            
+            .navbar-inverse{
+                padding:0;
+                margin:0;
+            }
+            body{
+                font-family: 'Roboto', sans-serif;
+            }
+            
+            
+     
+         </style>
+    <!-- <style rel="stylesheet" type="text/css" href="assets/css/main.css"></style> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="lostForm.css" />
+
+  </head>
+  <body>
+        <nav class="navbar navbar-inverse" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"> <i class="fab fa-searchengin"></i> Find My Stuff</a>
+                </div>
+                
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#"> <i class="fas fa-list-ul"></i> Items List</a></li>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook Page</a></li>
+                    </ul>
+                    
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"> <i class="fab fa-teamspeak"></i> Team</a></li>
+                        <li><a href="#"> <i class="fas fa-question"></i> About</a></li>
+                        <li><a href="#"> <i class="fas fa-chart-area"></i> Stats</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+
+
+        
+        <div class="container centertopage">
+        <h2>Please let us know the details:</h2>
+        
+        <!-- Form starts -->
+        <form id="contact-form" method="post" action="" role="form">
+
+            <div class="messages"></div>
+        
+            <div class="controls">
+                <div class="row">
+                    
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label for="form_name">Item name *</label>
+                            <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your lost item name *" required="required" data-error="Item name is required.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_lastname">Details(Location) *</label>
+                            <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter the location it was lost *" required="required" data-error="Location is required.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                                <div class="col-10">
+                                    <input class="form-control" type="date" value="2018-08-19" id="example-date-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                    <label for="example-time-input" class="col-2 col-form-label">Time</label>
+                                    <div class="col-10">
+                                      <input class="form-control" type="time" value="13:45:00" id="example-time-input">
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="form_message">Specifications of the item(30-40 words) *</label>
+                            <textarea id="form_message" name="message" class="form-control" placeholder="Specifications of the lost item(Color, Time, Date, Reward etc.) *" rows="4" required="required" data-error="Please, leave us a message."></textarea>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <input type="submit" class="btn btn-success btn-send" value="Add Query">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="text-muted">
+                            <strong>*</strong> These fields are required. We will do our best to find your item.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        
+        </form>
+    </div>
+    <!-- Form ends -->
+    
+    <!-- JQuery CN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+  </body>
+  <footer class="page-footer font-small dark footer">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© Created By:
+      <a href="https://github.com/ashishgupta1350"> Ashish Gupta</a>
+    </div>
+    <!-- Copyright -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" integrity="sha256-dHf/YjH1A4tewEsKUSmNnV05DDbfGN3g7NMq86xgGh8=" crossorigin="anonymous"></script>
+  
+  </footer>
+  <!-- Footer -->
+</html>

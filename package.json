@@ -1,0 +1,36 @@
+{
+  "name": "find-my-stuff",
+  "version": "1.0.0",
+  "description": "Full stack web application to log users when they find lost items and connect them to people who are looking for those items.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashishgupta1350/FindMyStuff-DTU.git"
+  },
+  "keywords": [
+    "full",
+    "stack",
+    "web",
+    "app",
+    "find",
+    "my",
+    "stuff",
+    "nodejs",
+    "npm"
+  ],
+  "author": "Ashish Gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashishgupta1350/FindMyStuff-DTU/issues"
+  },
+  "homepage": "https://github.com/ashishgupta1350/FindMyStuff-DTU#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.10"
+  }
+}

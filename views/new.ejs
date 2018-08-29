@@ -1,0 +1,77 @@
+<% include partials/header %>
+
+<div class="container centertopage">
+        <h2>Please let us know the details:</h2>
+        
+        <!-- Form starts -->
+        <form id="contact-form" method="post" action="" role="form">
+
+            <div class="messages"></div>
+        
+            <div class="controls">
+                <div class="row">
+                    
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label for="form_name">Item name *</label>
+                            <input required id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your lost item name *" required="required" data-error="Item name is required.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_lastname">Details(Location) *</label>
+                            <input required id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter the location it was lost *" required="required" data-error="Location is required.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                                <div class="col-10">
+                                    <input required class="form-control" type="date" value="2018-08-19" id="example-date-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                    <label for="example-time-input" class="col-2 col-form-label">Time</label>
+                                    <div class="col-10">
+                                      <input required class="form-control" type="time" value="13:45:00" id="example-time-input">
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="form_message">Specifications of the item(30-40 words) *</label>
+                            <textarea required id="form_message" name="message" class="form-control" placeholder="Specifications of the lost item(Color, Time, Date, Reward etc.) *" rows="4" required="required" data-error="Please, leave us a message."></textarea>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <input type="submit" required class="btn btn-success btn-send" value="Add Query">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="text-muted">
+                            <strong>*</strong> These fields are required. We will do our best to find your item.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        
+        </form>
+    </div>
+    <!-- Form ends -->
+<% include partials/footer %>
