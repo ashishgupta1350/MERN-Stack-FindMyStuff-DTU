@@ -36,8 +36,16 @@
                                         <td><%=item.item%></td>
                                         <td><%=item.details%></td>
                                         <td><%=item.specifications%></td>
-                                        <td><button>I've found it</button></td>
+                                        <td><form action="/items/<%= item._id %>?_method=DELETE" id="delete" method="POST">
+                                            <button>I've found it</button>
+                                          </form>
+                                        </td>
+                                        
                                         <td><a target="_blank" href="someimage.jpg"><i class="fas fa-camera"></i></a></td>
+                                        <!-- <td><form action="/items/<%=item._id%>" method="GET">
+                                            <button>Take me</button>
+                                          </form>
+                                        </td> -->
                                       </tr>
                             <% }); %>
                             
@@ -62,10 +70,27 @@
                                         <td><%=item.item%></td>
                                         <td><%=item.details%></td>
                                         <td><%=item.specifications%></td>
-                                        <td><button>I've found it</button></td>
-                                        <td><a target="_blank" href="someimage.jpg"><i class="fas fa-camera"></i></a></td>
+                                        <!-- <td><button></button></td> -->
+                                        <td>
+                                        <form action="/items/<%= item._id %>?_method=DELETE" id="delete" method="POST">
+                                            <button>It's Mine</button>
+                                          </form>
+                                        </td>
+                                        <td><a target="_blank" href="someimage.jpg" id="proceed"><i class="fas fa-camera"></i></a></td>
+                                        <!-- <td><form action="/items/<%=item._id%>" method="GET">
+                                            <button>Take me</button>
+                                          </form>
+                                        </td> -->
                                         </tr>
                             <% }); %>
+
+                            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content">
+                                        Are you sure it is yours? Your email id will be saved & sent to the owner and item will be removed from the database in a few hours.
+                                    </div>
+                                </div>
+                            </div>
                             
                         </tbody>
             </table>
@@ -82,6 +107,17 @@
       </div>
     </footer>
       <!-- Copyright -->
+
+      <%
+    function itsMineClicked()
+        {
+        var proceed = document.forms[0].querySelector("#proceed");
+        
+        
+        
+        return '';
+    }
+%>
 
     <% include partials/footer %>
 
