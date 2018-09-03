@@ -73,25 +73,34 @@ router.get("/items/new",function(req,res)
 
 router.get("/items/:id",function(req,res)
 {
-
+    // console.log(FoundItem.findById(req.params.id, req.params));
     LostItem.findById(req.params.id, function(err, foundItem){
         if(err){
             console.log(err);
             res.redirect("/items");
         } else {
-            if(LostItem.findById(req.params.id)) // if the item is not undefined then just render else:
-                res.render("show", {item: foundItem});
-            else{
-                FoundItem.findById(req.params.id, function(err, foundItem){
+            if(!foundItem)
+            {
+                console.log("Found item");
+                FoundItem.findById(req.params.id, function(err, foundFoundItem){
                     if(err){
                         console.log(err);
                         res.redirect("/items");
                     } else {
                         //render show template with that campground
-                        res.render("show", {item: foundItem});
+                        res.render("show", {item: foundFoundItem});
                     }
                 });
             }
+            else if(LostItem.findById(req.params.id)){ // if the item is not undefined then just render else:
+                console.log("Here in wrong place");
+                console.log(foundItem)
+                res.render("show", {item: foundItem});
+            }
+            else{
+                res.redirect("/items");
+            }
+            
         }
     });
 });

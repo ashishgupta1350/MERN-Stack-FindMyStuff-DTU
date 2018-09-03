@@ -1,0 +1,80 @@
+#map {
+    height: 93%;  
+    width: 100%; 
+    padding:0;
+    margin:0;
+   }
+html,body{
+       height:100%;
+       margin:0;
+       padding:0;
+       font-family: 'Roboto', sans-serif;
+
+
+}
+.navbar-inverse{
+    padding:0;
+    margin:0;
+    color:white;
+}
+li{
+    list-style: none;
+}
+
+.dark{
+    background:#232323;
+    border:0;
+    padding:0;
+    margin:0;
+    color:white;
+    bottom: 0;
+}
+.text-center{
+    color:white;
+    /* padding-top:0px;
+    padding-bottom:0px; */
+    
+}
+
+/* from Mozilla Debugging */
+.row{
+    margin-left:0px;
+    margin-right:0px;
+}
+
+.container .center{
+    text-align:center;
+    margin-top:2em;
+    background:pink;
+}
+.index-buttons{
+    text-align: center;
+    background:rgba(255,255,255,0.2);
+    padding:0;
+    margin:0;
+    position:fixed;
+    bottom:0;
+    /* margin-left:15%; */
+    width:100%;
+    
+}
+.container .container-buttons{
+    width:100%;
+    
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    /* background-color: red; */
+    /* color: white; */
+    text-align: center;
+}
+.row{
+    margin:0;
+}
+.centertopage{
+    padding-top:2%;
+}

@@ -1,11 +1,34 @@
 var express=require("express");
 var router=express.Router();
+var passport=require("passport");
 LostItem    =require("../models/lost.js"),
 FoundItem   =require("../models/found.js")
 
 router.get("/",function(req,res)
 {
     res.render("landing"); // landing.ejs
+});
+
+//register routes
+router.get("/register",function(req,res)
+{
+    res.render("register");
+})
+
+// Login routes
+router.get("/login",function(req,res)
+{
+    res.render("login");
+});
+
+router.post("/login",passport.authenticate("login",
+{
+    successRedirect:"/items",
+    failureRedirect:"/login",
+}),
+function(req,res)
+{
+
 });
 
 router.get("/team",function(req,res)

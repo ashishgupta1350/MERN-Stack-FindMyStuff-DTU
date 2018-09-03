@@ -27,26 +27,26 @@
                         <th>Specifications</th>
                         <th>Action</th>
                         <th>Image</th>
+                        <th>Further</th>
                     </tr>
                 </thead>
                     <tbody>
                             <% lostItems.forEach(function(item){ %>
                             
                                 <tr>
-                                        <td><%=item.item%></td>
-                                        <td><%=item.details%></td>
-                                        <td><%=item.specifications%></td>
-                                        <td><form action="/items/<%= item._id %>?_method=DELETE" id="delete" method="POST">
-                                            <button>I've found it</button>
-                                          </form>
-                                        </td>
-                                        
-                                        <td><a target="_blank" href="someimage.jpg"><i class="fas fa-camera"></i></a></td>
-                                        <!-- <td><form action="/items/<%=item._id%>" method="GET">
-                                            <button>Take me</button>
-                                          </form>
-                                        </td> -->
-                                      </tr>
+                                    <td><%=item.item%></td>
+                                    <td><%=item.details%></td>
+                                    <td><%=item.specifications%></td>
+                                    <td><form action="/items/<%= item._id %>?_method=DELETE" id="delete" method="POST">
+                                        <button>I've found it</button>
+                                        </form>
+                                    </td>
+                                    
+                                    <td><a target="_blank" href="someimage.jpg"><i class="fas fa-camera"></i></a></td>
+                                    <td><a class="btn btn-xs btn-success" href="/items/<%=item._id%>">More Details</a></td>
+
+                                </tr>
+
                             <% }); %>
                             
                       </tbody>
@@ -61,12 +61,12 @@
                         <th>Specifications</th>
                         <th>Action</th>
                         <th>Image</th>
+                        <th>Further</th>
                     </tr>
                 </thead>
                     <tbody>
                             <% foundItems.forEach(function(item){ %>
-                            
-                                <tr>
+                                    <tr>
                                         <td><%=item.item%></td>
                                         <td><%=item.details%></td>
                                         <td><%=item.specifications%></td>
@@ -74,14 +74,16 @@
                                         <td>
                                         <form action="/items/<%= item._id %>?_method=DELETE" id="delete" method="POST">
                                             <button>It's Mine</button>
-                                          </form>
+                                            </form>
                                         </td>
                                         <td><a target="_blank" href="someimage.jpg" id="proceed"><i class="fas fa-camera"></i></a></td>
                                         <!-- <td><form action="/items/<%=item._id%>" method="GET">
                                             <button>Take me</button>
-                                          </form>
+                                            </form>
                                         </td> -->
-                                        </tr>
+                                        <td><a class="btn btn-xs btn-success" href="/items/<%=item._id%>">More Details</a></td>
+                                    </tr>
+                                
                             <% }); %>
 
                             <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">

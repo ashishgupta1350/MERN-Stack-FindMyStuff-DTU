@@ -4,7 +4,7 @@ var express     =require("express"),
     methodOverride=require("method-override")
     passport    =require("passport"),
     LocalStrategy   =require("passport-local"),     
-    // User            =require("./models/user"),
+    User            =require("./models/user"),
     LostItem    =require("./models/lost.js"),
     FoundItem   =require("./models/found.js")
 
@@ -25,9 +25,9 @@ app.use(require("express-session")({
 
 app.use(passport.initialize());
 app.use(passport.session());
-// passport.use(new LocalStrategy(User.authenticate()))
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+passport.use(new LocalStrategy(User.authenticate()))
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 app.use(itemsRoute);
