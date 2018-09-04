@@ -3,7 +3,8 @@ var express     =require("express"),
     bodyParser  =require("body-parser"),
     methodOverride=require("method-override")
     passport    =require("passport"),
-    LocalStrategy   =require("passport-local"),     
+    LocalStrategy   =require("passport-local"),  
+    passportLocalMongoose=require("passport-local-mongoose"),     
     User            =require("./models/user"),
     LostItem    =require("./models/lost.js"),
     FoundItem   =require("./models/found.js")
@@ -18,10 +19,16 @@ app.set("view engine","ejs");
 mongoose.connect("mongodb://localhost/findMyStuffDB");
 
 app.use(require("express-session")({
-    secret:"Session for Find My Stuff DTU",
+    secret:"sessionforfindmystuffdtu",
     resave:false,
     saveUninitialized:false
 }));
+
+app.use(function(req,res,next)
+{
+    res.locals.currentUser=req.user;
+    next();
+});
 
 app.use(passport.initialize());
 app.use(passport.session());

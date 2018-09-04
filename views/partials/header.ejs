@@ -11,7 +11,60 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> 
     <link rel="stylesheet" href="../../public/main.css" type="text/css">
+    <style rel="stylesheet" type="text/css">
+        #map {
+            height: 93%;  
+            width: 100%; 
+            padding:0;
+            margin:0;
+        }
+        
+            
+        html,body{
+            height:100%;
+            margin:0;
+            padding:0;
+            font-family: 'Roboto', sans-serif;
 
+
+        }
+        .navbar-inverse{
+            padding:0;
+            margin:0;
+            color:white;
+        }
+
+
+        /* from Mozilla Debugging */
+
+
+        .index-buttons{
+            text-align: center;
+            background:rgba(255,255,255,0.2);
+            padding:0;
+            margin:0;
+            position:fixed;
+            bottom:0;
+            /* margin-left:15%; */
+            width:100%;
+            
+        }
+        .container .container-buttons{
+            width:100%;
+            
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            /* background-color: red; */
+            /* color: white; */
+            text-align: center;
+        }
+
+    </style>
   </head>
   <body>
         <nav class="navbar navbar-inverse" role="navigation">
@@ -38,10 +91,17 @@
                             <!-- <li><a href="team"> <i class="fab fa-teamspeak"></i> Team</a></li> -->
                             <!-- <li><a href="about"> <i class="fas fa-question"></i> About</a></li> -->
                             <!-- <li><a href="stats"> <i class="fas fa-chart-area"></i> Stats</a></li> -->
-                            <li><a href="login"> <i class="fab fa-login"></i> Login</a></li>
-                            <li><a href="signout"> <i class="fab fa-login"></i> Signout</a></li>
-
-
+                            <%=currentUser%>
+                            <%=console.log(currentUser)%>
+                            <%if(!currentUser){%>
+                                <li><a href="login"> <i class="fas fa-sign-in-alt"></i> Login</a></li>
+                                <li><a href="register"> <i class="fas fa-user-plus"></i> Sign Up</a></li>
+                            <%} else {%>
+                                <li><a href="#"> <i class="fas fa-user-plus"></i> Signed in as : <%=currentUser.username%></a></li>
+                                <li><a href="logout"> <i class="fab fa-login"></i> Logout</a></li>
+                            
+                            <%}%>
+                            
 
                             
                         </ul>
