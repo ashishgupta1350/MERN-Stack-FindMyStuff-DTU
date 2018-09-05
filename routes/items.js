@@ -2,6 +2,7 @@ var express=require("express");
 var router=express.Router();
 LostItem    =require("../models/lost.js"),
 FoundItem   =require("../models/found.js")
+var middleware = require("../middleware/middleware.js");
 
 router.get("/items",function(req,res)
 {
@@ -28,7 +29,7 @@ router.get("/items",function(req,res)
     });
     
 });
-router.post("/items",function(req,res)
+router.post("/items",middleware.isLoggedIn,function(req,res)
 {
     // console.log(req.body);
     // console.log(req.body.isLost);
@@ -37,8 +38,16 @@ router.post("/items",function(req,res)
         var specifications=req.body.specifications;
         var date=req.body.date;
         var time=req.body.time;
-        var itemObject={item:item,details:details,specifications:specifications, date:date ,time:time};
-    if(req.body.isLost=="lost"){
+        var author={
+            id:req.user._id,
+            username:req.user.username
+        };
+        var itemObject={item:item,details:details,specifications:specifications, date:date ,time:time,author:author};
+        console.log("******************************************************")
+        console.log(itemObject);
+        console.log("******************************************************")
+
+        if(req.body.isLost=="lost"){
         
         LostItem.create(itemObject,function(err,newlyCreated)
         {
@@ -66,46 +75,44 @@ router.post("/items",function(req,res)
 });
 
 
-router.get("/items/new",function(req,res)
+router.get("/items/new", middleware.isLoggedIn,function(req,res)
 {
     res.render("new");
 });
 
 router.get("/items/:id",function(req,res)
 {
-    // console.log(FoundItem.findById(req.params.id, req.params));
-    LostItem.findById(req.params.id, function(err, foundItem){
+
+    LostItem.findById(req.params.id, function(err, foundLostItem){
         if(err){
             console.log(err);
             res.redirect("/items");
-        } else {
-            if(!foundItem)
-            {
-                console.log("Found item");
-                FoundItem.findById(req.params.id, function(err, foundFoundItem){
-                    if(err){
-                        console.log(err);
-                        res.redirect("/items");
-                    } else {
-                        //render show template with that campground
-                        res.render("show", {item: foundFoundItem});
-                    }
-                });
-            }
-            else if(LostItem.findById(req.params.id)){ // if the item is not undefined then just render else:
-                console.log("Here in wrong place");
-                console.log(foundItem)
-                res.render("show", {item: foundItem});
-            }
+        }
+        else if(!foundLostItem)
+        {
+            FoundItem.findById(req.params.id, function(err, foundFoundItem){
+                if(err || !foundFoundItem){
+                    console.log("No Such Item exists");
+                    res.redirect("/items");
+                } else {
+                    //render show template with that campground
+                    res.render("show", {item: foundFoundItem});
+                }
+            });
+        } 
+        else {
+            if(LostItem.findById(req.params.id)) // if the item is not undefined then just render else:
+                res.render("show", {item: foundLostItem});
             else{
+                console.log("Not found item desired in the last else in items.js");
                 res.redirect("/items");
             }
-            
         }
     });
 });
 
-router.delete("/items/:id",function(req,res)
+
+router.delete("/items/:id",middleware.checkItemOwnership,function(req,res)
 {
    var found = FoundItem.findById(req.params.id);
    if(found){

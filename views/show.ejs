@@ -1,13 +1,44 @@
-<% include partials/header %>
-<div class="container" style:"text-align:center;">
+
+<% include partials/header%>
+<div class = "container">
     <div class="row">
-            <div class="jumbotron" >
-                <h1>Item:<%=item.item%></h1>
-                <p><img src="<%=item.image%>" alt="Associated Image"></p>
-                <p>Item Specifications: <%=item.specifications%></p>
-                <p>Item Details: <%=item.details%></p>
+        <div class="col-sm-3 col-md-3">
+            <p class="lead">Find My Stuff DTU</p>
+            <div class="list-group">
+                <li class="list-group-item active" >Navigation 1</li>
+                <li class="list-group-item">Navigation 2</li>
+                <li class="list-group-item">Navigation 3</li>
             </div>
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <div class="thumbnail">
+                <img src="http://www.gstatic.com/webp/gallery/1.jpg">
+                <div class="caption-full">
+                    
+                    
+                        
+                    <h4><a><%=item.item%></a></h4>
+                    
+                    <p><%= item.details %></p>
+                    <p><%= item.specifications%></p>
+                    
+                    
+                </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                    <a class="btn btn-success " href="/items/<%=item._id%>/comments/new">Add Comment</a>
+                </div>
+                <hr>
+                <!-------------------->
+                <p> Comments section</p>
+
+                
+            </div>
+            
+            
+        </div>
     </div>
 </div>
 
-<% include partials/footer %>
+<% include partials/footer%>

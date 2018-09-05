@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google.com">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,61 +9,11 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> 
-    <link rel="stylesheet" href="../../public/main.css" type="text/css">
-    <style rel="stylesheet" type="text/css">
-        #map {
-            height: 93%;  
-            width: 100%; 
-            padding:0;
-            margin:0;
-        }
-        
-            
-        html,body{
-            height:100%;
-            margin:0;
-            padding:0;
-            font-family: 'Roboto', sans-serif;
+    <link rel="stylesheet" href="main.css" type="text/css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script  type="text/javascript" src="main.js"></script> -->
 
-
-        }
-        .navbar-inverse{
-            padding:0;
-            margin:0;
-            color:white;
-        }
-
-
-        /* from Mozilla Debugging */
-
-
-        .index-buttons{
-            text-align: center;
-            background:rgba(255,255,255,0.2);
-            padding:0;
-            margin:0;
-            position:fixed;
-            bottom:0;
-            /* margin-left:15%; */
-            width:100%;
-            
-        }
-        .container .container-buttons{
-            width:100%;
-            
-        }
-
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            /* background-color: red; */
-            /* color: white; */
-            text-align: center;
-        }
-
-    </style>
   </head>
   <body>
         <nav class="navbar navbar-inverse" role="navigation">
@@ -88,20 +37,17 @@
                         </ul>
                         
                         <ul class="nav navbar-nav navbar-right">
-                            <!-- <li><a href="team"> <i class="fab fa-teamspeak"></i> Team</a></li> -->
-                            <!-- <li><a href="about"> <i class="fas fa-question"></i> About</a></li> -->
-                            <!-- <li><a href="stats"> <i class="fas fa-chart-area"></i> Stats</a></li> -->
-                            <%=currentUser%>
-                            <%=console.log(currentUser)%>
-                            <%if(!currentUser){%>
-                                <li><a href="login"> <i class="fas fa-sign-in-alt"></i> Login</a></li>
-                                <li><a href="register"> <i class="fas fa-user-plus"></i> Sign Up</a></li>
-                            <%} else {%>
-                                <li><a href="#"> <i class="fas fa-user-plus"></i> Signed in as : <%=currentUser.username%></a></li>
-                                <li><a href="logout"> <i class="fab fa-login"></i> Logout</a></li>
+                            <!-- <li><a href="team"> <i class="fab fa-teamspeak"></i> Team</a></li>
+                            <li><a href="about"> <i class="fas fa-question"></i> About</a></li>
+                            <li><a href="stats"> <i class="fas fa-chart-area"></i> Stats</a></li> -->
                             
+                            <% if (!currentUser) {%>
+                                <li><a href="/login"> <i class="fab fa-teamspeak"></i> Login</a></li>
+                                <li><a href="/register"> <i class="fas fa-question"></i> Register</a></li>
+                            <% } else {%>
+                                <li> <a href="#"><strong>Signed in as: <%=currentUser.username%></strong></a></li>
+                                <li><a href="/logout"> <i class="fas fa-chart-area"></i> logout</a></li>
                             <%}%>
-                            
 
                             
                         </ul>

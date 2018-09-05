@@ -4,77 +4,105 @@
     padding:0;
     margin:0;
    }
-html,body{
+   html,body{
        height:100%;
        margin:0;
        padding:0;
+
+   }
+   .navbar-inverse{
+       padding:0;
+       margin:0;
+   }
+   body{
        font-family: 'Roboto', sans-serif;
+   }
+   .index-buttons{
+       text-align: center;
+       background:rgba(255,255,255,0.2);
+       
+       padding:0;
+       margin:0;
+       position:fixed;
+       bottom:0;
+       /* margin-left:15%; */
+       width:100%;
+       
+   }
+   .container .container-buttons{
+       width:100%;
+       
+   }
+   .footer {
+       position: relative;
+       left: 0;
+       bottom: 0;
+       width: 100%;
+       /* background-color: red; */
+       /* color: white; */
+       text-align: center;
+   }  
+   .dark{
+       background:#232323;
+       border:0;
+       padding:0;
+       margin:0;
+       color:white;
+       bottom: 0;
+   } 
+   .row{
+       margin:0;
+   }
+   .centertopage{
+       padding-top:2%;
+   }
+   .itemDetailsButton{
+       display:inline-block;
+   }
+   table{
+       table-layout:fixed;
+       width: 100%;
+   }
 
+   th, td {
+       overflow: hidden;
+   }
 
-}
-.navbar-inverse{
-    padding:0;
-    margin:0;
-    color:white;
-}
-li{
-    list-style: none;
-}
-
-.dark{
-    background:#232323;
-    border:0;
-    padding:0;
-    margin:0;
-    color:white;
-    bottom: 0;
-}
-.text-center{
-    color:white;
-    /* padding-top:0px;
-    padding-bottom:0px; */
+   /* List styling */
+  .thisClass{
+       list-style: none;
+       width:33%;
+       transition-property: width;
+       transition-duration: 2s;
+       border: 1px solid #333;
+       border-radius: 0px;
     
-}
-
-/* from Mozilla Debugging */
-.row{
-    margin-left:0px;
-    margin-right:0px;
-}
-
-.container .center{
-    text-align:center;
-    margin-top:2em;
-    background:pink;
-}
-.index-buttons{
-    text-align: center;
-    background:rgba(255,255,255,0.2);
-    padding:0;
-    margin:0;
-    position:fixed;
-    bottom:0;
-    /* margin-left:15%; */
-    width:100%;
     
-}
-.container .container-buttons{
-    width:100%;
-    
-}
+   }
+   .buttonList{
+       text-align: center;
+       padding:0px;
+       margin:20px auto;
 
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    /* background-color: red; */
-    /* color: white; */
-    text-align: center;
-}
-.row{
-    margin:0;
-}
-.centertopage{
-    padding-top:2%;
-}
+   }
+   .btn-block + .btn-block{
+       margin-top:0px;
+   }
+   .searchbar{
+       text-align:center;
+       padding-top:70px;
+   }
+
+   /* Add media queries to hide the items from table*/
+   
+   .active{
+        background: #666;
+        color: white;
+   }
+   .plus-button{
+       text-align: center;
+       padding:3px;
+       margin:0;
+       font-size:2em;
+   }
+

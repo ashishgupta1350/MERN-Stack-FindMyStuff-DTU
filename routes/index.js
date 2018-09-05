@@ -1,63 +1,62 @@
 var express=require("express");
 var router=express.Router();
-var passport=require("passport");
 LostItem    =require("../models/lost.js"),
-FoundItem   =require("../models/found.js")
+FoundItem   =require("../models/found.js"),
+middleware      =require("../middleware/middleware.js")
+
 
 router.get("/",function(req,res)
 {
     res.render("landing"); // landing.ejs
 });
 
-//register routes
+router.get("/team",function(req,res)
+{
+    res.render("team"); // landing.ejs
+});
+
+// REGISTER ROUTES
 router.get("/register",function(req,res)
 {
     res.render("register");
 });
 
 router.post("/register",function(req,res)
-{
-    // we have somethings here
+{   
     var newUser=new User({username:req.body.username});
     User.register(newUser,req.body.password,function(err,user){
         if(err)
         {
+            console.log("In items.js, unable to register user");
             console.log(err);
-            res.redirect("back"); // to register
+            res.redirect("back")
         }
         else{
-            passport.authenticate("local")(req,res,function(){
+            passport.authenticate("local")(req,res,function()
+            {
+                console.log("successfully registered user",req.user);
+                res.locals.currentUser=req.user;
                 res.redirect("/items");
-            })
+            });
         }
-    })
-    
+    });
 });
-
-// Login routes
+// login routes
 router.get("/login",function(req,res)
 {
     res.render("login");
 });
 
-router.post("/login",passport.authenticate("local",
-{
-    successRedirect:"/items",
-    failureRedirect:"/login",
-}),
-function(req,res)
-{
+router.post("/login",passport.authenticate('local',{
+    successRedirect:'/items',
+    failureRedirect:"/login"
+}));
 
-});
-
+//signout
 router.get("/logout",function(req,res)
 {
     req.logout();
     res.redirect("/items");
-});
-router.get("/team",function(req,res)
-{
-    res.render("team"); // landing.ejs
 });
 
 

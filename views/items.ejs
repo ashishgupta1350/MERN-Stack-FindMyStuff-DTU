@@ -3,20 +3,30 @@
         <div class="container">
             <div class="topPart">
                 <ul class="buttonList">
-                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Lost Items</li>
-                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Found Items</li>
+                    <a onclick="toggleLostTable();"> <li   class="thisClass  lostClass btn btn-default btn-lg btn-block col-xs-5 col-sm-5 col-md-5 col-lg-5">Lost Items</li></a>
+                    <a href="/items/new"> <li   class=" thisClass plus-button btn btn-default btn-lg col-xs-2 col-sm-2 col-md-2 col-lg-2"><i class="fas fa-plus-circle"></i></li></a>
+                    <a onclick="toggleFoundTable();"> <li class="thisClass foundClass btn btn-default btn-lg btn-block col-xs-5 col-sm-5 col-md-5 col-lg-5">Found Items</li></a>
                 </ul>
-                <div class="searchbar">
-                    <!-- <div id="icon"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
-                    <input type="text"> -->
+                <!-- <div class="searchbar">
                     <form class="form-inline">
                         <div class="form-group">
                           <input type="text" class="form-control" id="" placeholder="Search">
                           <button type="submit" class="btn btn-default">Search</button>
                         </div>                        
-                      </form>
+                    </form>
+                </div> -->
+               <div class="searchbar">
+                    <form class="navbar-form" role="search">
+                        <div class="input-group add-on">
+                        <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                        </div>
+                    </form>
                 </div>
             </div>
+            
 
         <div class="table-item-lost">
             <table class="table table-hover">
@@ -31,27 +41,28 @@
                     </tr>
                 </thead>
                     <tbody>
-                            <% lostItems.forEach(function(item){ %>
-                            
-                                <tr>
-                                    <td><%=item.item%></td>
-                                    <td><%=item.details%></td>
-                                    <td><%=item.specifications%></td>
-                                    <td><form action="/items/<%= item._id %>?_method=DELETE" id="delete" method="POST">
-                                        <button>I've found it</button>
-                                        </form>
-                                    </td>
-                                    
-                                    <td><a target="_blank" href="someimage.jpg"><i class="fas fa-camera"></i></a></td>
-                                    <td><a class="btn btn-xs btn-success" href="/items/<%=item._id%>">More Details</a></td>
-
-                                </tr>
-
-                            <% }); %>
-                            
-                      </tbody>
+                        <% lostItems.forEach(function(item){ %>
+                            <tr>
+                                <td><%=item.item%></td>
+                                <td><%=item.details%></td>
+                                <td><%=item.specifications%></td>
+                                <td class="dynamicWidth"><form action="/items/<%= item._id %>?_method=DELETE" id="delete" method="POST">
+                                    <button>I've found it</button>
+                                    </form>
+                                </td>
+                                
+                                <td class="dynamicWidth"><a target="_blank" href="http://www.gstatic.com/webp/gallery/1.jpg"><i class="fas fa-camera"></i></a></td>
+                                <td class="dynamicWidth"><form action="/items/<%= item._id %>" method="GET">
+                                    <button>Show Details</button>
+                                </form>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
             </table>
         </div>
+
+
         <div class="table-item-found">
             <table class="table table-hover">
                 <thead>
@@ -65,43 +76,62 @@
                     </tr>
                 </thead>
                     <tbody>
-                            <% foundItems.forEach(function(item){ %>
-                                    <tr>
-                                        <td><%=item.item%></td>
-                                        <td><%=item.details%></td>
-                                        <td><%=item.specifications%></td>
-                                        <!-- <td><button></button></td> -->
-                                        <td>
-                                        <form action="/items/<%= item._id %>?_method=DELETE" id="delete" method="POST">
-                                            <button>It's Mine</button>
-                                            </form>
-                                        </td>
-                                        <td><a target="_blank" href="someimage.jpg" id="proceed"><i class="fas fa-camera"></i></a></td>
-                                        <!-- <td><form action="/items/<%=item._id%>" method="GET">
-                                            <button>Take me</button>
-                                            </form>
-                                        </td> -->
-                                        <td><a class="btn btn-xs btn-success" href="/items/<%=item._id%>">More Details</a></td>
-                                    </tr>
-                                
-                            <% }); %>
+                        <% foundItems.forEach(function(item){ %>
+                        
+                            <tr>
+                                <td><%=item.item%></td>
+                                <td><%=item.details%></td>
+                                <td><%=item.specifications%></td>
+                                <!-- <td><button></button></td> -->
+                                <td class="dynamicWidth">
+                                <form action="/items/<%= item._id %>?_method=DELETE" id="delete" method="POST">
+                                    <button>It's Mine</button>
+                                    </form>
+                                </td>
+                                <td class="dynamicWidth"><a target="_blank" href="http://www.gstatic.com/webp/gallery/1.jpg" id="proceed"><i class="fas fa-camera"></i></a></td>
 
-                            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                                <div class="modal-dialog modal-sm" role="document">
-                                    <div class="modal-content">
-                                        Are you sure it is yours? Your email id will be saved & sent to the owner and item will be removed from the database in a few hours.
-                                    </div>
+                                <td class="dynamicWidth"><form class="itemDetailsButton" action="/items/<%= item._id %>"  method="GET">
+                                    <button>Show Details</button>
+                                </td>
+                                </form>
+                                </tr>
+                        <% }); %>
+
+                        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                            <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    Are you sure it is yours? Your email id will be saved & sent to the owner and item will be removed from the database in a few hours.
                                 </div>
                             </div>
-                            
-                        </tbody>
+                        </div>
+                    </tbody>
             </table>
         </div>
-                
-            
         </div>
         </div>
      <!-- Copyright -->
+     <script type="text/javascript">
+        document.querySelector(".table-item-found").style.display = "none"
+        function toggleLostTable () {
+            // document.querySelectorAll(".table-item-lost")[0].style.display ="table";
+            $(".table-item-found").fadeOut(200,function()
+            {
+                $(".table-item-lost").fadeIn(100);
+            });
+            // $(".lostclass").addClass("active");
+            // $(".foundClass").removeClass("active");
+            
+            // document.querySelectorAll(".table-item-found")[0].style.display ="none";              
+        }
+        function toggleFoundTable () {
+            $(".table-item-lost").fadeOut(200,function()
+            {
+                $(".table-item-found").fadeIn(100);
+            });    
+            
+
+        }
+    </script>
         
     <footer class="page-footer font-small dark footer">
       <div class="footer-copyright text-center py-3">© Created By:
@@ -110,17 +140,7 @@
     </footer>
       <!-- Copyright -->
 
-      <%
-    function itsMineClicked()
-        {
-        var proceed = document.forms[0].querySelector("#proceed");
-        
-        
-        
-        return '';
-    }
-%>
-
+ 
     <% include partials/footer %>
 
 
