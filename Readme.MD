@@ -14,3 +14,7 @@ Add java script to load tables(as in semantic UI), forms and images.
 8) install body-parser, link forms to actual list items(lost -> lost list and found -> found list), add security to forms to disable scripting. All routes must be RESTful. (Major work)
 
 9) Install other dependencies including ejs (npm install ejs) express-sanitizer (for script avoidance) 
+
+
+## Above work is done, comments and user models with session has been added. Google auth is left
+
