@@ -83,30 +83,32 @@ router.get("/items/new", middleware.isLoggedIn,function(req,res)
 router.get("/items/:id",function(req,res)
 {
 
-    LostItem.findById(req.params.id, function(err, foundLostItem){
+        // ObjectId.fromString( req.params.id ); This needs to be done to remove that casting error
+
+        
+    // LostItem.findById(req.params.id, function(err, foundLostItem){
+    LostItem.findById(req.params.id).populate("comments").exec(function(err, foundLostItem){
         if(err){
             console.log(err);
             res.redirect("/items");
         }
         else if(!foundLostItem)
         {
-            FoundItem.findById(req.params.id, function(err, foundFoundItem){
+            // FoundItem.findById(req.params.id, function(err, foundFoundItem){
+            FoundItem.findById(req.params.id).populate("comments").exec(function(err, foundFoundItem){
+            
                 if(err || !foundFoundItem){
                     console.log("No Such Item exists");
                     res.redirect("/items");
                 } else {
-                    //render show template with that campground
+                    //render show template with that item
                     res.render("show", {item: foundFoundItem});
                 }
             });
         } 
         else {
-            if(LostItem.findById(req.params.id)) // if the item is not undefined then just render else:
-                res.render("show", {item: foundLostItem});
-            else{
-                console.log("Not found item desired in the last else in items.js");
-                res.redirect("/items");
-            }
+            // console.log(foundLostItem);
+            res.render("show", {item: foundLostItem});
         }
     });
 });

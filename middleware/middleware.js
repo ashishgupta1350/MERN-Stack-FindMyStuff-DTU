@@ -58,40 +58,41 @@ middlewareObj.checkItemOwnership=function(req,res,next)
         res.redirect("/login");
     }
 };
-// middlewareObj.checkCommentsOwnership=function(req,res,next)
-// {
-//     if(req.isAuthenticated())
-//     {
-//         Comment.findById(req.params.comment_id,function(err,foundComment)
-//         {
-//            if(err||!foundComment)
-//            {
-//             //   console.log(err);
-//               if(err){
-//                 req.flash("error",err.message);
-//             }
-//               res.redirect("back");
-//            }
-//            else{
-//             //   console.log(foundComment);
-//             //   console.log(req.user);
-//                if(foundComment.author.id.equals(req.user._id))
-//                {
-//                    next();
-//                }else{
-//                 //   res.send("Not authorized to change/delete");
-//                     req.flash("error","You are not authorized.");
-//                    res.redirect("back");
-//                }
-//            }
-//         });
-//     }
-//     else{
-//         // console.log("You need to be logged in first");
-//         req.flash("error","You need to be logged in to do that.");
-//         res.redirect("back");
-//     }
-// };
+middlewareObj.checkCommentsOwnership=function(req,res,next)
+{
+    if(req.isAuthenticated())
+    {
+        Comment.findById(req.params.comment_id,function(err,foundComment)
+        {
+           if(err||!foundComment)
+           {
+            //   console.log(err);
+            //   if(err){
+            //     req.flash("error",err.message);
+            // }
+              res.redirect("back");
+           }
+           else{
+            //   console.log(foundComment);
+            //   console.log(req.user);
+               if(foundComment.author.id.equals(req.user._id))
+               {
+                   next();
+               }else{
+                //   res.send("Not authorized to change/delete");
+                    // req.flash("error","You are not authorized.");
+                   res.redirect("back");
+               }
+           }
+        });
+    }
+    else{
+        // console.log("You need to be logged in first");
+        // req.flash("error","You need to be logged in to do that.");
+        console.log("Please log in to do that!")
+        res.redirect("/login");
+    }
+};
 
 middlewareObj.isLoggedIn= function(req,res,next)
 {

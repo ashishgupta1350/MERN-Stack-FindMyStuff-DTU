@@ -9,14 +9,19 @@ var express         =require("express"),
     LostItem        =require("./models/lost.js"),
     FoundItem       =require("./models/found.js"),
     everyauth       =require("everyauth"),
-    middleware      =require("./middleware/middleware.js")
-    
+    middleware      =require("./middleware/middleware.js"),
+    Comment         =require("./models/comment")
+
+
 var app=express();
+
+app.use(methodOverride("_method"));
+
 var itemsRoute=require("./routes/items"),
-    indexRoute=require("./routes/index")
+    indexRoute=require("./routes/index"),
+    commentRoute=require("./routes/comment")
 
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(methodOverride("_method"));
 app.use(express.static(__dirname + "/public"));
 app.set("view engine","ejs");
 mongoose.connect("mongodb://localhost/findMyStuffDB");
@@ -26,9 +31,6 @@ app.use(require("express-session")({
     resave:false,
     saveUninitialized:false
 }));
-
-
-
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -50,6 +52,7 @@ app.use(function(req,res,next)
 
 app.use(itemsRoute);
 app.use(indexRoute);
+app.use(commentRoute);
 
 app.listen(3000,function()
 {
