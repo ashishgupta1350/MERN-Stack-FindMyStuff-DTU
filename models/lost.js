@@ -5,7 +5,20 @@ var lostItemsSchema=new mongoose.Schema({
     details:String,
     specifications:String,
     date:String,
-    time:String
+    time:String,
+    author:{
+        id:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"User"
+        },
+        username:String
+    },
+    comments:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:"Comment"
+        }
+    ]
 }); 
 var LostItem= mongoose.model("LostItem",lostItemsSchema);
 
