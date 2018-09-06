@@ -6,12 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Find My Stuff - DTU</title>
     
+    <script src="moment.js"></script>
+   
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> 
     <link rel="stylesheet" href="main.css" type="text/css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
     <!-- <script  type="text/javascript" src="main.js"></script> -->
 
   </head>
@@ -28,11 +29,11 @@
                         </button>
                         <a class="navbar-brand" href="/"> <i class="fab fa-searchengin"></i> Find My Stuff</a>
                     </div>
-                
+                    
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="items"> <i class="fas fa-list-ul"></i> Items List</a></li>
+                            <li class="active"><a href="/items"> <i class="fas fa-list-ul"></i> Items List</a></li>
                             <li><a href="https://fb.me/findmystuffdtu" target="_blank"><i class="fab fa-facebook-f"></i> Facebook Page</a></li>
                         </ul>
                         
@@ -44,6 +45,7 @@
                             <% if (!currentUser) {%>
                                 <li><a href="/login"> <i class="fab fa-teamspeak"></i> Login</a></li>
                                 <li><a href="/register"> <i class="fas fa-question"></i> Register</a></li>
+                                <li><a href="/auth/google"> Sign In with <i class="fab fa-google"></i></a></li>
                             <% } else {%>
                                 <li> <a href="#"><strong>Signed in as: <%=currentUser.username%></strong></a></li>
                                 <li><a href="/logout"> <i class="fas fa-chart-area"></i> logout</a></li>

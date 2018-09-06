@@ -44,7 +44,7 @@
                         <% lostItems.forEach(function(item){ %>
                             <tr>
                                 <td><%=item.item%></td>
-                                <td><%=item.details%></td>
+                                <td> Last seen at <%=item.details%> about <%=moment(item.date+"T"+item.time).fromNow()%></td>
                                 <td><%=item.specifications%></td>
                                 <td class="dynamicWidth"><form action="/items/<%= item._id %>?_method=DELETE" id="delete" method="POST">
                                     <button>I've found it</button>

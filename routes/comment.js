@@ -76,6 +76,8 @@ router.post("/items/:id/comments",middleware.isLoggedIn,function(req,res)
                                 // add username and id to the comment
                                 comment.author.id=req.user._id;
                                 comment.author.username=req.user.username;
+                                comment.date=moment().format();
+
                                 comment.save();
                                 foundFoundItem.comments.push(comment);
                                 foundFoundItem.save();
@@ -104,6 +106,8 @@ router.post("/items/:id/comments",middleware.isLoggedIn,function(req,res)
                     // add username and id to the comment
                     comment.author.id=req.user._id;
                     comment.author.username=req.user.username;
+                    comment.date=moment().format(); 
+
                     comment.save();
                     foundLostItem.comments.push(comment);
                     foundLostItem.save();

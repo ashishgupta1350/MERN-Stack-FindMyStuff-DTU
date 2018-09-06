@@ -17,7 +17,14 @@
                     
                     
                         
-                    <h4><a><%=item.item%></a></h4>
+                    <h2>
+                        <a><%=item.item%></a>
+                        <span class="pull-right" style="font-size:18px">
+                            <%=moment(item.date).fromNow();%>
+                            
+                            
+                        </span>
+                    </h2>
                     
                     <p><%= item.details %></p>
                     <p><%= item.specifications%></p>
@@ -37,7 +44,7 @@
                             
                             <strong><%=comment.author.username %></strong>
                             <span class="pull-right">
-                                3 Days Ago
+                                <%=moment(comment.date).fromNow();%>
                             </span>
                             <p><%=comment.text%></p>
                            
@@ -46,9 +53,10 @@
                                     href="/items/<%=item._id%>/comments/<%=comment._id%>/edit">
                                     Edit
                                 </a>
-                                <form class="delete-form" action="/items/<%=item._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                <form class="delete-form" style="display:inline;" action="/items/<%=item._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
                                     <input  type="submit" class="btn btn-xs btn-danger" value="Delete">
                                 </form>
+                                <hr>
                             <%}%>
                         </div>
                     </div>
