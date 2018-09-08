@@ -1,0 +1,8 @@
+.DS_Store
+.nodemonignore
+npm-debug.log
+node_modules/
+.idea/
+.bower-registry/
+.bower-cache/
+.bower-tmp/

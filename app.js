@@ -30,7 +30,7 @@ passport.use(new GoogleStrategy({
     },
     function(accessToken, refreshToken, profile, done) {
         // User.register({ username: profile.name.givenName }, function (err, user) {
-            
+
         //     return done(err, user);
         // });
         var localUser;
@@ -79,12 +79,12 @@ app.get('/auth/google',
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-app.get('/auth/google/callback', 
+app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/items');
   });
-  
+
 // THE GOOGLE CODE ENDS --------------------------------------------
 
 var itemsRoute=require("./routes/items"),
@@ -124,7 +124,7 @@ app.use(itemsRoute);
 app.use(indexRoute);
 app.use(commentRoute);
 
-app.listen(3000,function()
+app.listen(4004,function()
 {
     console.log("The FindMyStuff server has started!");
 });
