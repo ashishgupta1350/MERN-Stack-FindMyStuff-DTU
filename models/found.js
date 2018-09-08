@@ -6,6 +6,9 @@ var foundItemsSchema=new mongoose.Schema({
     specifications:String,
     date:String,
     time:String,
+    location: String,
+    lat: Number,
+    lng: Number,
     author:{
         id:{
             type:mongoose.Schema.Types.ObjectId,

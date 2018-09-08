@@ -1,10 +1,10 @@
 <% include partials/header %>
 
 <div class="container centertopage">
-        <h2>Please let us know the details:</h2>
+        <h2>Edit Details of <%=item.item%></h2>
         
         <!-- Form starts -->
-        <form id="contact-form"  action="/items" method="POST" >
+        <form id="contact-form"  action="/items/<%=item._id%>?_method=PUT" method="POST" >
 
             <div class="messages"></div>
         
@@ -15,14 +15,14 @@
 
                         <div class="form-group">
                             <label for="form_name">Item name *</label>
-                            <input required id="form_name" type="text" name="item" class="form-control" placeholder="Please enter the item name (Lost/Found) *" required="required" data-error="Item name is required.">
+                            <input required id="form_name" type="text" name="item[item]" class="form-control" value="<%=item.item%>" required="required" data-error="Item name is required.">
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="form_lastname">Location(2-3 words) *</label>
-                            <input required id="form_lastname" type="text" name="details" class="form-control" placeholder="Please enter the location it was lost/found *" required="required" data-error="Location is required.">
+                            <input required id="form_lastname" type="text" name="item[details]" class="form-control" value="<%=item.details%>" required="required" data-error="Location is required.">
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                             <div class="form-group">
                                 <label for="example-date-input" class="col-2 col-form-label">Date</label>
                                 <div class="col-10">
-                                    <input required class="form-control" name="date"  type="date" value="2018-08-19" id="example-date-input">
+                                    <input required class="form-control" name="item[date]"  type="date" value="<%=item.date%>"id="example-date-input">
                                 </div>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                             <div class="form-group">
                                     <label for="example-time-input" class="col-2 col-form-label">Time</label>
                                     <div class="col-10">
-                                      <input required class="form-control" name="time" type="time" value="13:45:00" id="example-time-input">
+                                      <input required class="form-control" name="item[time]" type="time" value="<%=item.time%>" id="example-time-input">
                                     </div>
                             </div>
                         </div>
@@ -52,18 +52,22 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="form_message">Specifications of the item, start with "Lost" or "Found"(30-40 words) *</label>
-                            <textarea required id="form_message" name="specifications" class="form-control" placeholder="Specifications of the lost item(Color, Time, Date, Reward etc.) *" rows="4" required="required" data-error="Please, leave us a message."></textarea>
+                            <textarea required id="form_message" name="item[specifications]" class="form-control" value="<%=item.specifications%>" rows="4" required="required" data-error="Please, leave us a message."></textarea>
                             <div class="help-block with-errors"></div>
                         </div>
+                        <p>Please fill this again:</p>
                         <div class="form-group">
                             <label for="form_isLost">The item is lost*</label>
-                            <input type="radio" id="form_isLost" name="isLost" value="lost" required />
+                            <input type="radio" id="form_isLost" name="item[isLost]" value="lost" required />
                         </div>
                         <div class="form-group">
                             <label for="form_isFound">Item is found*</label>
-                            <input type="radio" id="form_isFound" name="isLost" value="found" />
+                            <input type="radio" id="form_isFound" name="item[isLost]"  />
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input class="form-control" type="text" name="location" id="location" value="<%= item.location %>">
+                        </div>
                     </div>
                     
                     <div class="col-md-12">

@@ -90,20 +90,14 @@
                                 </td>
                                 <td class="dynamicWidth"><a target="_blank" href="http://www.gstatic.com/webp/gallery/1.jpg" id="proceed"><i class="fas fa-camera"></i></a></td>
 
-                                <td class="dynamicWidth"><form class="itemDetailsButton" action="/items/<%= item._id %>"  method="GET">
+                                <td class="dynamicWidth"><form class="itemDetailsButton" action="/items/<%=item._id%>"  method="GET">
                                     <button>Show Details</button>
                                 </td>
                                 </form>
                                 </tr>
                         <% }); %>
 
-                        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                            <div class="modal-dialog modal-sm" role="document">
-                                <div class="modal-content">
-                                    Are you sure it is yours? Your email id will be saved & sent to the owner and item will be removed from the database in a few hours.
-                                </div>
-                            </div>
-                        </div>
+                        
                     </tbody>
             </table>
         </div>

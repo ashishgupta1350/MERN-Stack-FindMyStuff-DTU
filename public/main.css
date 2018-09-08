@@ -110,3 +110,9 @@
        margin:60px;
        padding:20px;
    }
+
+   /* Google Maps */
+    #map_show {
+        height: 400px;
+        width: 100%;
+    }

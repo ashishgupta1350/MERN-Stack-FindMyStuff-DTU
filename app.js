@@ -1,6 +1,6 @@
 var express         =require("express"),
     mongoose        =require("mongoose"),
-    bodyParser      =require("body-parser"),
+
     methodOverride  =require("method-override")
     passport        =require("passport"),
     LocalStrategy   =require("passport-local"),
@@ -13,7 +13,8 @@ var express         =require("express"),
     Comment         =require("./models/comment"),
     GoogleStrategy  =require('passport-google-oauth').OAuth2Strategy,
     findOrCreate    =require("mongoose-findorcreate"),
-    moment          =require("moment")
+    moment          =require("moment"),
+    bodyParser      =require("body-parser")
 var app=express();
 app.use(methodOverride("_method"));
 
@@ -94,7 +95,7 @@ var itemsRoute=require("./routes/items"),
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + "/public"));
 app.set("view engine","ejs");
-mongoose.connect("mongodb://localhost/findMyStuffDB");
+mongoose.connect("mongodb://localhost/findMyStuffLatestDB",{ useNewUrlParser: true });
 
 app.use(require("express-session")({
     secret:"Session for Find My Stuff DTU",

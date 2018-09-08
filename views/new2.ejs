@@ -1,0 +1,35 @@
+<form action="/items" method="POST" >
+    <label for="item_name">Item name *</label>
+    <input required id="item_name" type="text" name="item" class="form-control" placeholder="Please enter the item name (Lost/Found) *" required="required" data-error="Item name is required.">
+
+    <label for="form_lastname">Location(2-3 words) *</label>
+    <input required id="form_lastname" type="text" name="details" class="form-control" placeholder="Please enter the location it was lost/found *" required="required" data-error="Location is required.">
+    
+    <label for="example-date-input" class="col-2 col-form-label">Date</label>
+    <input required  name="date"  type="date" value="2018-08-19" id="example-date-input">
+
+    <label for="example-time-input" class="col-2 col-form-label">Time</label>
+    <input required class="form-control" name="time" type="time" value="13:45:00" id="example-time-input">
+    <br>
+    <div class="form-group">
+            <label for="form_message">Specifications of the item, start with "Lost" or "Found"(30-40 words) *</label>
+            <textarea required id="form_message" name="specifications" class="form-control" placeholder="Specifications of the lost item(Color, Time, Date, Reward etc.) *" rows="4" required="required" data-error="Please, leave us a message."></textarea>
+            <div class="help-block with-errors"></div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input class="form-control" type= lat: Number,
+            lng: Number,"text" name="location" id="location" placeholder="Yosemite National Park, CA">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="form_isLost">The item is lost*</label>
+            <input type="radio" id="form_isLost" name="isLost" value="lost" required />
+        </div>
+        <div class="form-group">
+            <label for="form_isFound">Item is found*</label>
+            <input type="radio" id="form_isFound" name="isLost" value="found" />
+        </div>
+        <button class="btn btn-success">Submit</button>
+        </form>
